@@ -19,6 +19,8 @@ function dbset(){
 
 dbset();
 
+//공공데이터포털 Auth Key
+$dataAuthKey="P1fKbSLJWlPufXTKpSIJIZUUhZnpWGJU";
 
 
 function readPLEX($type){
@@ -114,7 +116,6 @@ function readPLEX($type){
 	return $return;
 }
 
-// https://www.koreaexim.go.kr/site/program/financial/exchangeJSON?authkey=P1fKbSLJWlPufXTKpSIJIZUUhZnpWGJU&searchdate=20190906&data=AP01
 
 function readUSD(){
 
@@ -124,7 +125,7 @@ function readUSD(){
 		$itemcurl= curl_init();
 		curl_setopt($itemcurl, CURLOPT_SSL_VERIFYPEER, $SSLauth); 
 		curl_setopt($itemcurl,CURLOPT_HTTPGET,true);
-		curl_setopt($itemcurl,CURLOPT_URL,"https://www.koreaexim.go.kr/site/program/financial/exchangeJSON?authkey=P1fKbSLJWlPufXTKpSIJIZUUhZnpWGJU&searchdate=".date("Ymd",(time()-($daybefore*24*3600)))."&data=AP01");
+		curl_setopt($itemcurl,CURLOPT_URL,"https://www.koreaexim.go.kr/site/program/financial/exchangeJSON?authkey=".$dataAuthKey."&searchdate=".date("Ymd",(time()-($daybefore*24*3600)))."&data=AP01");
 		curl_setopt($itemcurl,CURLOPT_RETURNTRANSFER,true);
 
 		$curl_response=curl_exec($itemcurl);
